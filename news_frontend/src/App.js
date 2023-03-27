@@ -3,7 +3,6 @@ import axios from 'axios';
 import CreateBookmark from './components/CreateBookmark'
 
 import './App.css';
-import React, { useState, useEffect } from 'react';
 import Registration from './components/Registration';
 
 const App = () => {
