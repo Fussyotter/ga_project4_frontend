@@ -38,7 +38,7 @@ const Edit = (props) => {
         <br />
         <label htmlFor="name">Description: </label>
         <input
-          type="number"
+          type="text"
           name="name"
           value={news.description}
           onChange={handleChange}
