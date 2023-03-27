@@ -7,7 +7,7 @@ const CreateBookmarks = (props) => {
   const [news, setNews] = useState(emptyBookmarks);
 
   const handleChange = (e) => {
-    setNews({ ...news, [e.target.title]: e.target.value });
+    setNews({ ...news, [e.target.name]: e.target.value });
   };
 
     const handleSubmit = (e) => {
@@ -27,8 +27,8 @@ const CreateBookmarks = (props) => {
             <input type="text" name="title" onChange={handleChange} />
             <br />
             <br />
-            <label htmlFor="age">Description: </label>
-            <input type="number" name="description" onChange={handleChange} />
+            <label htmlFor="name">Description: </label>
+            <input type="text" name="description" onChange={handleChange} />
             <br />
             <br />
             <label htmlFor="name">News URL: </label>
