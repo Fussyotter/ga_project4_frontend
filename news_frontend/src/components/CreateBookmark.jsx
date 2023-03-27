@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 
 
 const CreateBookmarks = (props) => {
-  let emptyBookmarks = { title: "", description: "", url: "" };
+  let emptyBookmarks = { author: "", title: "", description: "", url: "", publishedAt: "" };
   const [news, setNews] = useState(emptyBookmarks);
 
   const handleChange = (e) => {
