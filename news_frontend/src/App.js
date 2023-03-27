@@ -30,6 +30,16 @@ const handleCreate = (newBookmark) =>{
     })
 }
 
+// =================== DELETE BOOKMARK ============= //
+
+const handleDelete = (item) =>{
+console.log(item)
+  axios
+    .delete(`http://localhost:8000/articles/${item.target.value}`)
+    .then((res)=>{
+      getBookmarks()
+    })
+}
 
 useEffect(()=>{
   getBookmarks()
@@ -52,6 +62,7 @@ useEffect(()=>{
           <h5>written by: {bookmark.author}</h5>
           <p>{bookmark.description}</p>
           <h5>Published at: {bookmark.publishedAt}</h5>
+          <button onClick={handleDelete} value={bookmark.id}>Delete</button>
         </div>
       )
     })}
