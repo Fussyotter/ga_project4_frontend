@@ -17,7 +17,6 @@ const CreateBookmarks = (props) => {
 
   return (
     <>
-        <h1>Create Bookmarks</h1>
         <form onSubmit={handleSubmit}>
         <label htmlFor="name">Author: </label>
             <input type="text" name="author" onChange={handleChange} />

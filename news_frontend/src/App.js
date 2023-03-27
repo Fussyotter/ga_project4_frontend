@@ -18,6 +18,7 @@ const getBookmarks = () =>{
     })
 }
 
+
 // =============== CREATE BOOKMARK ============ //
 
 const handleCreate = (newBookmark) =>{
@@ -29,6 +30,7 @@ const handleCreate = (newBookmark) =>{
     })
 }
 
+
 useEffect(()=>{
   getBookmarks()
 }, [])
@@ -38,6 +40,7 @@ useEffect(()=>{
     <h1>News App</h1>
 
     <h1>Bookmarks</h1>
+
     
     <CreateBookmark handleCreate={handleCreate}/>
 
