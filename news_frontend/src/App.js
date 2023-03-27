@@ -1,6 +1,6 @@
-import react, {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import CreateBookmark from './components/CreateBookmark'
+import CreateBookmark from './components/CreateBookmark.jsx'
 
 
 const App = () => {
@@ -19,12 +19,17 @@ const getBookmarks = () =>{
 }
 
 
-const handleCreate = (newBookmark) => {
-  axios.post("http://localhost:8000/articles", newBookmark).then((res) => {
-    console.log(res);
-    getBookmarks(); // we are calling this to update the state of the current component no matter what happens
-  });
-};
+// =============== CREATE BOOKMARK ============ //
+
+const handleCreate = (newBookmark) =>{
+  axios
+    .post('http://localhost:8000/articles', newBookmark)
+    .then((res)=>{
+      console.log(res)
+      getBookmarks()
+    })
+}
+
 
 useEffect(()=>{
   getBookmarks()
@@ -35,7 +40,10 @@ useEffect(()=>{
     <h1>News App</h1>
 
     <h1>Bookmarks</h1>
-    <CreateBookmark handleCreate={handleCreate} />
+
+    
+    <CreateBookmark handleCreate={handleCreate}/>
+
     {bookmarks.map((bookmark)=>{
       return(
         <div className='bookmark' key={bookmark.id}>
