@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 
 
@@ -45,3 +46,5 @@ const CreateBookmarks = (props) => {
     );
 };
 export default CreateBookmarks;
+=======
+>>>>>>> c48cfa8 (catchup)
