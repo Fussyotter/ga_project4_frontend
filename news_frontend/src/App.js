@@ -18,6 +18,14 @@ const getBookmarks = () =>{
     })
 }
 
+
+const handleCreate = (newBookmark) => {
+  axios.post("http://localhost:8000/articles", newBookmark).then((res) => {
+    console.log(res);
+    getBookmarks(); // we are calling this to update the state of the current component no matter what happens
+  });
+};
+
 useEffect(()=>{
   getBookmarks()
 }, [])
@@ -27,7 +35,7 @@ useEffect(()=>{
     <h1>News App</h1>
 
     <h1>Bookmarks</h1>
-    
+    <CreateBookmark handleCreate={handleCreate} />
     {bookmarks.map((bookmark)=>{
       return(
         <div className='bookmark' key={bookmark.id}>
