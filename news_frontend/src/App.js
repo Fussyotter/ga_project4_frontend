@@ -32,10 +32,10 @@ const handleCreate = (newBookmark) =>{
 
 // =================== DELETE BOOKMARK ============= //
 
-const handleDelete = (item) =>{
-console.log(item)
+const handleDelete = (event) =>{
+console.log(event)
   axios
-    .delete(`http://localhost:8000/articles/${item.target.value}`)
+    .delete(`http://localhost:8000/articles/${event.target.value}`)
     .then((res)=>{
       getBookmarks()
     })
@@ -67,12 +67,12 @@ useEffect(()=>{
     {bookmarks.map((bookmark)=>{
       return(
         <div className='bookmark' key={bookmark.id}>
-          <img src= {bookmark.url}/>
-          <h3>{bookmark.title}</h3>
           <h5>written by: {bookmark.author}</h5>
-          <p>{bookmark.description}</p>
+          <h3>Title:{bookmark.title}</h3>
+          <p>Description: {bookmark.description}</p>
+          <h4>url: {bookmark.url}</h4>
           <h5>Published at: {bookmark.publishedAt}</h5>
-           <EditBookmark handleUpdate={handleUpdate} bookmarks={bookmarks} />
+           <EditBookmark handleUpdate={handleUpdate}   news={bookmark}/>
           <button onClick={handleDelete} value={bookmark.id}>Delete</button>
         </div>
       )

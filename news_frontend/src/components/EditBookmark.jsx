@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 const Edit = (props) => {
-  // let emptyperson = {name: '', age: ''};
   const [news, setNews] = useState({ ...props.news });
 
   const handleChange = (e) => {
@@ -38,7 +37,7 @@ const Edit = (props) => {
         <br />
         <label htmlFor="name">Description: </label>
         <input
-          type="number"
+          type="text"
           name="name"
           value={news.description}
           onChange={handleChange}
@@ -47,19 +46,19 @@ const Edit = (props) => {
         <br />
         <label htmlFor="name">News url: </label>
         <input
-          type="text"
-          name="url"
-          value={news.url}
-          onChange={handleChange}
+            type="text"
+            name="url"
+            value={news.url}
+            onChange={handleChange}
         />
         <br />
         <br />
         <label htmlFor="name">Published At: </label>
         <input
-          type="text"
-          name="publishedAt"
-          value={news.publishedAt}
-          onChange={handleChange}
+            type="text"
+            name="publishedAt"
+            value={news.publishedAt}
+            onChange={handleChange}
         />
         <input type="submit" />
       </form>
