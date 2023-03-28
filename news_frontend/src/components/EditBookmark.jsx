@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 const Edit = (props) => {
-  // let emptyperson = {name: '', age: ''};
   const [news, setNews] = useState({ ...props.news });
 
   const handleChange = (e) => {
