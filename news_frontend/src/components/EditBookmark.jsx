@@ -47,19 +47,19 @@ const Edit = (props) => {
         <br />
         <label htmlFor="name">News url: </label>
         <input
-          type="text"
-          name="url"
-          value={news.url}
-          onChange={handleChange}
+            type="text"
+            name="url"
+            value={news.url}
+            onChange={handleChange}
         />
         <br />
         <br />
         <label htmlFor="name">Published At: </label>
         <input
-          type="text"
-          name="publishedAt"
-          value={news.publishedAt}
-          onChange={handleChange}
+            type="text"
+            name="publishedAt"
+            value={news.publishedAt}
+            onChange={handleChange}
         />
         <input type="submit" />
       </form>
