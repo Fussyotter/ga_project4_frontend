@@ -22,7 +22,7 @@ useEffect(()=>{
     return (
         <>
         <h1>News API</h1>
-        {newsData.map((news)=>{
+        {/* {newsData.map((news)=>{
             return(
             <>
 
@@ -35,7 +35,7 @@ useEffect(()=>{
 
             </>
             )
-        })}
+        })} */}
         </>
     );
 }
