@@ -4,11 +4,11 @@ import axios from "axios";
 
 const API = () => {
 let emptyNewsData = {author:'', title:'', description:'', url:'', urlToImage:'',publishedAt:''}
-let [newsData, setNewsData] = useState(emptyNewsData)
+let [newsData, setNewsData] = useState([])
 
 const getNewsdata = () =>{
     axios
-        .get(`https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=11521f070b4c48fda14b33dc24389d9c`)
+        .get(`https://newsapi.org/v2/top-headlines?country=us&category=sports&apiKey=11521f070b4c48fda14b33dc24389d9c`, emptyNewsData)
         .then((res)=>{
             setNewsData(res.data.articles)
             console.log(res.data.articles)
@@ -22,7 +22,7 @@ useEffect(()=>{
     return (
         <>
         <h1>News API</h1>
-        {/* {newsData.map((news)=>{
+        {newsData.map((news)=>{
             return(
             <>
 
@@ -30,12 +30,13 @@ useEffect(()=>{
                 <h3>{news.title}</h3>
                 <h5>Written by: {news.author}</h5>
                 <p>{news.description}</p>
-                <h7>Read more: {news.url}</h7>
-                <h7>Published at: {news.publishedAt}</h7>
+                <h6><a href={news.url}>Read more</a></h6>
+                
+                <h6>Published at: {news.publishedAt}</h6>
 
             </>
             )
-        })} */}
+        })}
         </>
     );
 }
