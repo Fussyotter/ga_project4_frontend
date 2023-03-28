@@ -5,6 +5,8 @@ import EditBookmark from "./components/EditBookmark";
 import API from "./components/NewsApi.jsx";
 import Signup from './components/signup/Signup';
 import Login from './components/login/Login';
+import Category from './components/Category';
+import './App.css'
 const App = () => {
 
 let [bookmarks, setBookmarks] = useState([])
@@ -63,6 +65,7 @@ useEffect(()=>{
     <Signup />
     <Login/>
     <API/>
+    <Category />
     <h1>Bookmarks</h1>
 
     
