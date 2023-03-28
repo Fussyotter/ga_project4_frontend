@@ -33,7 +33,6 @@ useEffect(()=>{
         {newsData.map((news)=>{
             return(
             <>
-
                 <img src={news.urlToImage}/>
                 <h3>{news.title}</h3>
                 <h5>Written by: {news.author}</h5>
