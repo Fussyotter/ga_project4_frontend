@@ -5,14 +5,21 @@ import axios from "axios";
 const API = () => {
 let emptyNewsData = {author:'', title:'', description:'', url:'', urlToImage:'',publishedAt:''}
 let [newsData, setNewsData] = useState([])
+let [search, setSearch] = useState('')
+
 
 const getNewsdata = () =>{
     axios
-        .get(`https://newsapi.org/v2/top-headlines?country=us&category=sports&apiKey=11521f070b4c48fda14b33dc24389d9c`, emptyNewsData)
+        .get(`https://newsapi.org/v2/everything?language=en&q=${search}&apiKey=11521f070b4c48fda14b33dc24389d9c`, emptyNewsData)
         .then((res)=>{
             setNewsData(res.data.articles)
             console.log(res.data.articles)
         })
+}
+
+const handleSearchChange = (e) =>{
+    setSearch(e.target.value)
+    console.log(e.target.value)
 }
 
 useEffect(()=>{
@@ -22,6 +29,7 @@ useEffect(()=>{
     return (
         <>
         <h1>News API</h1>
+        <input type='text' onChange={handleSearchChange}/>
         {newsData.map((news)=>{
             return(
             <>
