@@ -3,7 +3,8 @@ import axios from 'axios';
 import CreateBookmark from './components/CreateBookmark'
 
 import './App.css';
-import Registration from './components/Registration';
+import {ToastContainer} from "react-toastify";
+import Signup from './components/signup/Signup';
 
 const App = () => {
 
@@ -27,7 +28,7 @@ useEffect(()=>{
   return (
     <>
     <h1>News App</h1>
-    <Registration />
+    <Signup/>
     </>
   );
 }
