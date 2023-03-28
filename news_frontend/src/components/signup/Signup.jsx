@@ -61,9 +61,9 @@ const Signup = () => {
 				</div>
 			</form>
 			<button onClick={onSignupClick}>Sign up</button>
-			<p className='mt-2'>
+			{/* <p className='mt-2'>
 				Already have account? <a href='/login'>Login</a>
-			</p>
+			</p> */}
 		</div>
 	);
 };
