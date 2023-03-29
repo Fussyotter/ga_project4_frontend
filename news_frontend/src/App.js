@@ -5,8 +5,9 @@ import EditBookmark from "./components/EditBookmark";
 import API from "./components/NewsApi.jsx";
 import Signup from './components/signup/Signup';
 import Login from './components/login/Login';
-import Category from './components/Category';
-import './App.css'
+import Category from "./components/Category.jsx";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const App = () => {
 
 let [bookmarks, setBookmarks] = useState([])
@@ -64,6 +65,7 @@ useEffect(()=>{
     <h1>News App</h1>
     <Signup />
     <Login/>
+    <ToastContainer />
     <API/>
     <Category />
     <h1>Bookmarks</h1>
