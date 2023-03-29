@@ -20,16 +20,18 @@ export const login = async (userData) => {
 		console.log('Login response:', response.data);
 
 		const { auth_token } = response.data;
-		setAxiosAuthToken(auth_token);
-		await getCurrentUser();
+		setToken(auth_token);
+		await loadUser(auth_token);
+		// this is to set state in login.jsx
+		return { success: true };
 	} catch (error) {
 		console.error('Login error:', error);
 
 		unsetCurrentUser();
-		throw error;
+		return { success: false, error };
 	}
 };
-
+// goes to the api endpoint with djoser and enters the information into fields.
 export const getCurrentUser = async () => {
 	try {
 		const response = await axios.get('http://localhost:8000/v1/users/me');
@@ -44,11 +46,16 @@ export const getCurrentUser = async () => {
 		throw error;
 	}
 };
-
+export const loadUser = async (auth_token) => {
+	setAxiosAuthToken(auth_token);
+	const user = await getCurrentUser();
+	setCurrentUser(user);
+};
 export const setCurrentUser = (user) => {
+	// stores user
 	localStorage.setItem('user', JSON.stringify(user));
 	console.log('set user');
-	console.log(user)
+	console.log(user);
 };
 
 export const setToken = (token) => {

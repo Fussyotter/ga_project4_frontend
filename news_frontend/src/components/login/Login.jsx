@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 const Login = () => {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
+	const [loginStatus, setLoginStatus] = useState(null)
 
 	const handleLogin = async (e) => {
 		e.preventDefault();
@@ -14,11 +15,13 @@ const Login = () => {
 				position: toast.POSITION.TOP_CENTER,
 			});
 			console.log('login successful');
+			setLoginStatus('success');
 		} catch (error) {
 			console.error('login failed:', error);
 			toast.error('Login Failed!', {
 				position: toast.POSITION.TOP_RIGHT,
 			});
+			setLoginStatus('failed');
 		}
 	};
 	const handleLogout = async () => {
@@ -28,8 +31,11 @@ const Login = () => {
 				position: toast.POSITION.TOP_CENTER,
 			});
 			console.log('logout successful');
+			setLoginStatus('failed');
 		} catch (error) {
 			console.error('logout failed', error);
+			setLoginStatus('failed');
+
 		}
 	};
 
@@ -53,6 +59,7 @@ const Login = () => {
 					onChange={(e) => setPassword(e.target.value)}
 				/>
 			</div>
+			<p></p>
 			<button onClick={handleLogin}>Log in</button>
 			<button onClick={handleLogout}>log out</button>
 		</>
