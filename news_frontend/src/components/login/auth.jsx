@@ -21,9 +21,26 @@ export const login = async (userData) => {
 
 		const { auth_token } = response.data;
 		setToken(auth_token);
-		await loadUser(auth_token);
+		// console.log(auth_token)
+		const user = await getCurrentUser();
+		const userArticlesResponse = await axios.get(
+			`http://localhost:8000/articles/user/${userData.username}`,
+			{
+				headers: {
+					Authorization: `Token ${auth_token}`,
+				},
+			}
+		);
+		const authorDescriptionTitle = userArticlesResponse.data.map((item) => ({
+			author: item.author,
+			description: item.description,
+			title: item.title,
+		}));
+
+		// console.log(authorDescriptionTitle);
+		return { success: true, user, authorDescriptionTitle };
 		// this is to set state in login.jsx
-		return { success: true };
+		// return { success: true };
 	} catch (error) {
 		console.error('Login error:', error);
 
@@ -38,19 +55,19 @@ export const getCurrentUser = async () => {
 		const user = {
 			username: response.data.username,
 			email: response.data.email,
+			first_name: response.data.first_name,
 		};
-		setCurrentUser(user);
+		// setCurrentUser(user);
 		return user;
 	} catch (error) {
-		unsetCurrentUser();
 		throw error;
 	}
 };
-export const loadUser = async (auth_token) => {
-	setAxiosAuthToken(auth_token);
-	const user = await getCurrentUser();
-	setCurrentUser(user);
-};
+// export const loadUser = async (auth_token) => {
+// 	setAxiosAuthToken(auth_token);
+// 	const user = await getCurrentUser();
+// 	setCurrentUser(user);
+// };
 export const setCurrentUser = (user) => {
 	// stores user
 	localStorage.setItem('user', JSON.stringify(user));
@@ -58,9 +75,11 @@ export const setCurrentUser = (user) => {
 	console.log(user);
 };
 
+// we're passing the token to the parent to pass it down to the login's child
 export const setToken = (token) => {
 	setAxiosAuthToken(token);
 	localStorage.setItem('token', token);
+	// setToken(token)
 };
 
 export const unsetCurrentUser = () => {
@@ -79,3 +98,25 @@ export const logout = async () => {
 		throw error;
 	}
 };
+
+// export const getArticlesForUser = async (username, token) => {
+// 	try {
+// 		const response = await axios.get(
+// 			`http://localhost:8000/articles/users/${username}/`,
+// 			{
+// 				headers: {
+// 					Authorization: `Token ${token}`,
+// 				},
+// 			}
+// 		);
+
+// 		const articles = response.data.map((article) => ({
+// 			title: article.title,
+// 			url: article.url,
+// 		}));
+
+// 		return articles;
+// 	} catch (error) {
+// 		throw error;
+// 	}
+// };
