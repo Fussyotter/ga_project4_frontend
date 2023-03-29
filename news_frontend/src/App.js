@@ -12,6 +12,7 @@ import './test.css';
 
 
 
+import './App.css'
 const App = () => {
 
 let [bookmarks, setBookmarks] = useState([])
