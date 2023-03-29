@@ -10,7 +10,7 @@ let [search, setSearch] = useState('')
 
 const getNewsdata = () =>{
     axios
-        .get(`https://newsapi.org/v2/everything?language=en&q=${search}&apiKey=11521f070b4c48fda14b33dc24389d9c`, emptyNewsData)
+        .get(`https://newsapi.org/v2/everything?language=en&q=${search}&apiKey=a47d3f89e50f4c399034797f62f2e2b4`, emptyNewsData)
         .then((res)=>{
             setNewsData(res.data.articles)
             console.log(res.data.articles)
