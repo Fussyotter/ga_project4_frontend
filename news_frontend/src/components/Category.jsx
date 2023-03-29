@@ -6,7 +6,7 @@ const Category = () => {
   const [category, setCategory] = useState([]);
 
   const getArticles = async () => {
-    const API_KEY = "170825ce728b4277a6f2e52ae956bc8a";
+    const API_KEY = "6e268264b02649c0801cc7f2b33d3798";
     const url = `https://newsapi.org/v2/top-headlines?category=${category}&apiKey=${API_KEY}`;
     const response = await axios.get(url);
     setArticles(response.data.articles);
@@ -19,18 +19,27 @@ const Category = () => {
   const handleCategoryChange = (category) => {
     setCategory(category);
   };
+  //   function handleSubmit(event) {
+  //     event.preventDefault();
+
+  //   }
 
   return (
     <>
-      <h1>News API</h1>
-      <h3>
-        <b>Category</b>
-      </h3>
+      {/* <h2>Search Category</h2>
+      <form onSubmit={handleSubmit}>
+        <input type="text" name="category" value={category} onChange={(e) => setCategory(e.target.value)} />
+        <button type="submit">Search</button>
+      </form> */}
+      <h2 class="h1">Category</h2>
+
       {articles.map((news) => (
-        <div key={news.url}>
+        <div className="article" key={news.url}>
+          <img src={news.urlToImage} alt="" />
           <h2>{news.title}</h2>
           <p>{news.description}</p>
-         <a href={news.url}>Read more</a>
+          <h6>Published at: {news.publishedAt}</h6>
+          <a href={news.url}>Read more...</a>
         </div>
       ))}
       <ul className="categoryButtons">
@@ -61,7 +70,6 @@ const Category = () => {
           </button>
         </li>
       </ul>
-     
     </>
   );
 };

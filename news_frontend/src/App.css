@@ -1,7 +1,28 @@
+
+
+.article{
+  position: grid;
+  border-radius: 16px;
+  overflow: hidden;
+  width:40%;
+  margin:10px;
+}
+.article img {
+  max-width: 100%;
+  transform-origin: center;
+  transform: scale(var(--img-scale));
+  transition: transform 0.4s ease-in-out;
+}
+
+.h2{
+  text-align: center;
+}
 .categoryButtons {
   display: flex;
   justify-content: center;
   margin-top: 10px;
+
+ 
 }
 
 .categoryButtons li {
