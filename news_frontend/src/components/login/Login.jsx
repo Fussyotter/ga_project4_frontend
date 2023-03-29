@@ -1,27 +1,41 @@
 import React, { useState } from 'react';
-import { login, logout } from './auth';
+import { login, logout, getArticlesForUser } from './auth';
 import { toast } from 'react-toastify';
+import Article from '../BookmarkTest';
 
 const Login = () => {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
-	const [loginStatus, setLoginStatus] = useState(null)
+	const [loginStatus, setLoginStatus] = useState(null);
+	const [user, setUser] = useState(null);
+	const [authorDescriptionTitle, setAuthorDescriptionTitle] = useState([]);
+	// const [token, setToken] = useState('');
 
 	const handleLogin = async (e) => {
 		e.preventDefault();
 		try {
-			await login({ username: username, password: password });
+			const { user, token, authorDescriptionTitle } = await login({
+				username: username,
+				password: password,
+			});
 			toast.success('Login Successful!', {
 				position: toast.POSITION.TOP_CENTER,
 			});
 			console.log('login successful');
-			setLoginStatus('success');
+
+			setUser(user);
+			setLoginStatus(true);
+			setAuthorDescriptionTitle(authorDescriptionTitle);
+			console.log(authorDescriptionTitle.author);
+
+			// const articles = await getArticlesForUser(username, token);
 		} catch (error) {
 			console.error('login failed:', error);
 			toast.error('Login Failed!', {
 				position: toast.POSITION.TOP_RIGHT,
 			});
-			setLoginStatus('failed');
+			setLoginStatus(false);
+			setUser(null);
 		}
 	};
 	const handleLogout = async () => {
@@ -31,11 +45,12 @@ const Login = () => {
 				position: toast.POSITION.TOP_CENTER,
 			});
 			console.log('logout successful');
-			setLoginStatus('failed');
+			setLoginStatus(false);
+			setUser(null);
 		} catch (error) {
 			console.error('logout failed', error);
-			setLoginStatus('failed');
-
+			setLoginStatus(false);
+			setUser(null);
 		}
 	};
 
@@ -59,9 +74,25 @@ const Login = () => {
 					onChange={(e) => setPassword(e.target.value)}
 				/>
 			</div>
-			<p></p>
-			<button onClick={handleLogin}>Log in</button>
-			<button onClick={handleLogout}>log out</button>
+			<div>
+				{!loginStatus ? (
+					<button onClick={handleLogin}>Log in</button>
+				) : (
+					<div>
+						<p>Welcome, {username}!</p>
+						<div>
+							{authorDescriptionTitle.map((item) => (
+								<div key={item.title}>
+									<h3>{item.title}</h3>
+									<p>Author: {item.author}</p>
+									<p>URL: {item.url}</p>
+								</div>
+							))}
+						</div>
+						<button onClick={handleLogout}>log out</button>
+					</div>
+				)}
+			</div>
 		</>
 	);
 };

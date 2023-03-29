@@ -6,6 +6,9 @@ export const signupNewUser = async (userData) => {
 			'http://localhost:8000/v1/users/',
 			userData
 		);
+		// djoser default url doesn't have first/last name by default in post so have to use patch
+		// https://djoser.readthedocs.io/en/latest/base_endpoints.html
+		// also requires a new serializer instead of default user model
 		return response.data;
 	} catch (error) {
 		if (error.response) {
