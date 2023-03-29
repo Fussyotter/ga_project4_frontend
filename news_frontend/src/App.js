@@ -63,11 +63,12 @@ useEffect(()=>{
   return (
     <>
     <h1>News App</h1>
+    <Category />
     <Signup />
     <Login/>
     <ToastContainer />
     <API/>
-    <Category />
+    
     <h1>Bookmarks</h1>
 
     
@@ -83,6 +84,7 @@ useEffect(()=>{
           <h5>Published at: {bookmark.publishedAt}</h5>
            <EditBookmark handleUpdate={handleUpdate}   news={bookmark}/>
           <button onClick={handleDelete} value={bookmark.id}>Delete</button>
+        
         </div>
       )
     })}
