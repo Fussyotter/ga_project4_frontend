@@ -8,6 +8,11 @@ import Login from './components/login/Login';
 import Category from "./components/Category.jsx";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './test.css';
+
+
+
+import './App.css'
 const App = () => {
 
 let [bookmarks, setBookmarks] = useState([])
@@ -61,13 +66,30 @@ useEffect(()=>{
 }, [])
 
   return (
-    <>
-    <h1>News App</h1>
+    <div className="body">
+
+    <div className="nav">
+
+        <div className="logocontainer"><img src="https://cdn-icons-png.flaticon.com/512/21/21601.png" className="logo"/>
+        </div>
+
+        <div className="users">
+            <div className="signup"><Signup/></div>
+            <div className="login"><Login/></div>
+        </div>
+
+    </div>
     <Category />
     <Signup />
     <Login/>
     <ToastContainer />
     
+    
+    
+    
+    
+    <ToastContainer />
+  
     
     <h1>Bookmarks</h1>
 
@@ -77,19 +99,19 @@ useEffect(()=>{
     {bookmarks.map((bookmark)=>{
       return(
         <div className='bookmark' key={bookmark.id}>
+          <img src= {bookmark.url}/>
+          <h3>{bookmark.title}</h3>
           <h5>written by: {bookmark.author}</h5>
-          <h3>Title:{bookmark.title}</h3>
-          <p>Description: {bookmark.description}</p>
-          <h4>url: {bookmark.url}</h4>
+          <p>{bookmark.description}</p>
           <h5>Published at: {bookmark.publishedAt}</h5>
-           <EditBookmark handleUpdate={handleUpdate}   news={bookmark}/>
+          <EditBookmark handleUpdate={handleUpdate}   news={bookmark}/>
           <button onClick={handleDelete} value={bookmark.id}>Delete</button>
         
         </div>
       )
     })}
     
-    </>
+    </div>
   );
 };
 

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {stringify} from 'flatted';
 
@@ -8,8 +8,7 @@ let emptyNewsData = {author:'', title:'', description:'', url:'', urlToImage:'',
 let [newsData, setNewsData] = useState([])
 let [search, setSearch] = useState('')
 
-
-const getNewsdata = () =>{
+  const getNewsdata = () => {
     axios
 			.get(
 				`https://newsapi.org/v2/everything?language=en&q=sports&apiKey=b6af741376054e738865ec14e3a907c1`,
@@ -57,10 +56,10 @@ const handleAddToUser = (article) => {
       console.log(error);
     });
 };
-
-useEffect(()=>{
-    getNewsdata()
-}, [])
+>
+  useEffect(() => {
+    getNewsdata();
+  }, []);
 
     return (
         <>
