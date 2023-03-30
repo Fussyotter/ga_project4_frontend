@@ -64,10 +64,17 @@ const handleAddToUser = (article) => {
     return (
         <>
         <h1>News API</h1>
-        <div>
-        <input type ='text' value ={search} onChange={(e) => setSearch(e.target.value)}/>
-        <button onClick={handleSearchChange}>test</button>
-        </div>
+        <div className="searchcontainer">
+        <input
+          className="searchbar"
+          type="text"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <button className="searchbutton" onClick={handleSearchChange}>
+          Search
+        </button>
+      </div>
         {newsData.map((news)=>{
             return (
 							<><div className="article">
