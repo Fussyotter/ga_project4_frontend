@@ -56,7 +56,7 @@ const handleAddToUser = (article) => {
       console.log(error);
     });
 };
->
+
   useEffect(() => {
     getNewsdata();
   }, []);
@@ -64,11 +64,14 @@ const handleAddToUser = (article) => {
     return (
         <>
         <h1>News API</h1>
+        <div>
         <input type ='text' value ={search} onChange={(e) => setSearch(e.target.value)}/>
         <button onClick={handleSearchChange}>test</button>
+        </div>
         {newsData.map((news)=>{
             return (
-							<>
+							<><div className="article">
+                <div className="card">
 								<img src={news.urlToImage} />
 								<h3>{news.title}</h3>
 								<h5>Written by: {news.author}</h5>
@@ -79,6 +82,8 @@ const handleAddToUser = (article) => {
 								<button onClick={() => handleAddToUser(news)}>test</button>
 
 								<h6>Published at: {news.publishedAt}</h6>
+                </div>
+                </div>
 							</>
 						);
         })}
