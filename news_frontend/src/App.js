@@ -1,19 +1,18 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import CreateBookmark from "./components/CreateBookmark.jsx";
-import EditBookmark from "./components/EditBookmark";
-import API from "./components/NewsApi.jsx";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import CreateBookmark from './components/CreateBookmark.jsx';
+import EditBookmark from './components/EditBookmark';
+import API from './components/NewsApi.jsx';
 import Signup from './components/signup/Signup';
 import Login from './components/login/Login';
-import Category from "./components/Category.jsx";
+import Category from './components/Category.jsx';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './test.css';
 
-
-
-import './App.css'
+import './App.css';
 const App = () => {
+
 
 let [bookmarks, setBookmarks] = useState([])
 
@@ -110,6 +109,7 @@ useEffect(()=>{
     
     </div>
   );
+
 };
 
 export default App;

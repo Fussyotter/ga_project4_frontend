@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { login, logout, getArticlesForUser } from './auth';
 import { toast } from 'react-toastify';
-import Article from '../BookmarkTest';
-
+import API from '../NewsApi';
 const Login = () => {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
@@ -14,7 +13,7 @@ const Login = () => {
 	const handleLogin = async (e) => {
 		e.preventDefault();
 		try {
-			const { user, token, authorDescriptionTitle } = await login({
+			const { user, authorDescriptionTitle } = await login({
 				username: username,
 				password: password,
 			});
@@ -56,49 +55,49 @@ const Login = () => {
 
 	return (
 		<>
-		<details>
+			<details>
 				<summary>Login</summary>
 				<div>
-			
-				<label htmlFor='username'>Username:</label>
-				<input
-					type='text'
-					id='username'
-					value={username}
-					onChange={(e) => setUsername(e.target.value)}
-				/>
-			</div>
-			<div>
-				<label htmlFor='password'>password:</label>
-				<input
-					type='text'
-					id='password'
-					value={password}
-					onChange={(e) => setPassword(e.target.value)}
-				/>
-			</div>
-			<div>
-				{!loginStatus ? (
-					<button onClick={handleLogin}>Log in</button>
-				) : (
-					<div>
-						<p>Welcome, {username}!</p>
+					<label htmlFor='username'>Username:</label>
+					<input
+						type='text'
+						id='username'
+						value={username}
+						onChange={(e) => setUsername(e.target.value)}
+					/>
+				</div>
+				<div>
+					<label htmlFor='password'>password:</label>
+					<input
+						type='text'
+						id='password'
+						value={password}
+						onChange={(e) => setPassword(e.target.value)}
+					/>
+				</div>
+				<div>
+					{!loginStatus ? (
+						<button onClick={handleLogin}>Log in</button>
+					) : (
 						<div>
-							{authorDescriptionTitle.map((item) => (
-								<div key={item.title}>
-									<h3>{item.title}</h3>
-									<p>Author: {item.author}</p>
-									<p>URL: {item.url}</p>
-								</div>
-							))}
+							<p>Welcome, {username}!</p>
+							<div>
+								{authorDescriptionTitle.map((item) => (
+									<div key={item.title}>
+										<h3>{item.title}</h3>
+										<p>Author: {item.author}</p>
+										<p>URL: {item.url}</p>
+									</div>
+								))}
+							</div>
+							<button onClick={handleLogout}>log out</button>
 						</div>
-						<button onClick={handleLogout}>log out</button>
-					</div>
-				)}
-			</div>
+					)}
+				</div>
 			</details>
-			
+			<API username={username} />
 		</>
 	);
 };
+
 export default Login;
