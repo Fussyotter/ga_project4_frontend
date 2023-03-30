@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { login, logout, getArticlesForUser } from './auth';
 import { toast } from 'react-toastify';
-import Article from '../BookmarkTest';
-
+import API from '../NewsApi';
 const Login = () => {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
@@ -14,7 +13,7 @@ const Login = () => {
 	const handleLogin = async (e) => {
 		e.preventDefault();
 		try {
-			const { user, token, authorDescriptionTitle } = await login({
+			const { user,  authorDescriptionTitle } = await login({
 				username: username,
 				password: password,
 			});
@@ -93,6 +92,7 @@ const Login = () => {
 					</div>
 				)}
 			</div>
+			<API username={username}/>
 		</>
 	);
 };

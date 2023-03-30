@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
+import {stringify} from 'flatted';
 
 
-const API = () => {
+const API = (props) => {
 let emptyNewsData = {author:'', title:'', description:'', url:'', urlToImage:'',publishedAt:''}
 let [newsData, setNewsData] = useState([])
 let [search, setSearch] = useState('')
@@ -10,11 +11,14 @@ let [search, setSearch] = useState('')
 
 const getNewsdata = () =>{
     axios
-        .get(`https://newsapi.org/v2/everything?language=en&q=sports&apiKey=11521f070b4c48fda14b33dc24389d9c`, emptyNewsData)
-        .then((res)=>{
-            setNewsData(res.data.articles)
-            console.log(res.data.articles)
-        })
+			.get(
+				`https://newsapi.org/v2/everything?language=en&q=sports&apiKey=b6af741376054e738865ec14e3a907c1`,
+				emptyNewsData
+			)
+			.then((res) => {
+				setNewsData(res.data.articles);
+				console.log(res.data.articles);
+			});
 }
 
 const handleSearchChange = (e) =>{
@@ -25,7 +29,34 @@ const handleSearchChange = (e) =>{
             setNewsData(res.data.articles)
         });
     console.log(e.target.value)
-}
+    }
+
+
+
+
+const handleAddToUser = (article) => {
+  const data = {
+		author: article.author,
+		title: article.title,
+		description: article.description,
+		url: article.url,
+		publishedAt: article.publishedAt,
+		user: [props.username]
+	};
+
+  axios
+    .post('http://localhost:8000/articles', data, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
 
 useEffect(()=>{
     getNewsdata()
@@ -37,19 +68,20 @@ useEffect(()=>{
         <input type ='text' value ={search} onChange={(e) => setSearch(e.target.value)}/>
         <button onClick={handleSearchChange}>test</button>
         {newsData.map((news)=>{
-            return(
-            <>
+            return (
+							<>
+								<img src={news.urlToImage} />
+								<h3>{news.title}</h3>
+								<h5>Written by: {news.author}</h5>
+								<p>{news.description}</p>
+								<h6>
+									<a href={news.url}>Read more</a>
+								</h6>
+								<button onClick={() => handleAddToUser(news)}>test</button>
 
-                <img src={news.urlToImage}/>
-                <h3>{news.title}</h3>
-                <h5>Written by: {news.author}</h5>
-                <p>{news.description}</p>
-                <h6><a href={news.url}>Read more</a></h6>
-                
-                <h6>Published at: {news.publishedAt}</h6>
-
-            </>
-            )
+								<h6>Published at: {news.publishedAt}</h6>
+							</>
+						);
         })}
         </>
     );

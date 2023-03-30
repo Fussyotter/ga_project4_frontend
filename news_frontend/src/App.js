@@ -67,7 +67,7 @@ useEffect(()=>{
     <Signup />
     <Login/>
     <ToastContainer />
-    <API/>
+    
     
     <h1>Bookmarks</h1>
 
