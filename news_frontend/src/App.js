@@ -74,12 +74,12 @@ useEffect(()=>{
 
         <div className="users">
             <div className="signup"><Signup/></div>
-            <div className="login"><Login/></div>
         </div>
 
     </div>
-    <Category />
-    <API/>
+    {/* <Category /> */}
+            <Login/>
+   
     
     
     

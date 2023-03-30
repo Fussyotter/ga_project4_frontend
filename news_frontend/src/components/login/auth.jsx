@@ -35,9 +35,11 @@ export const login = async (userData) => {
 			author: item.author,
 			description: item.description,
 			title: item.title,
+			url: item.url,
+			urlToImage: item.urlToImage,
 		}));
 
-		// console.log(authorDescriptionTitle);
+		console.log(authorDescriptionTitle);
 		return { success: true, user, authorDescriptionTitle };
 		// this is to set state in login.jsx
 		// return { success: true };
