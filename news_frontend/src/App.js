@@ -79,9 +79,9 @@ useEffect(()=>{
         </div>
 
     </div>
-
-    <API/>
     <Category />
+    <API/>
+    
     
     
     <ToastContainer />
