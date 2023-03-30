@@ -94,7 +94,8 @@ useEffect(()=>{
 
     {bookmarks.map((bookmark)=>{
       return(
-        <div className='bookmark' key={bookmark.id}>
+        <div className='article' key={bookmark.id}>
+          <div className="card">
           <img src= {bookmark.url}/>
           <h3>{bookmark.title}</h3>
           <h5>written by: {bookmark.author}</h5>
@@ -102,7 +103,7 @@ useEffect(()=>{
           <h5>Published at: {bookmark.publishedAt}</h5>
           <EditBookmark handleUpdate={handleUpdate}   news={bookmark}/>
           <button onClick={handleDelete} value={bookmark.id}>Delete</button>
-        
+          </div>
         </div>
       )
     })}
