@@ -12,95 +12,104 @@ import './test.css';
 
 import './App.css';
 const App = () => {
-	let [bookmarks, setBookmarks] = useState([]);
 
-	// =========== GET BOOKMARKED ARTICLES ============== //
 
-	const getBookmarks = () => {
-		axios.get('http://localhost:8000/articles').then((res) => {
-			setBookmarks(res.data);
-			console.log(res.data);
-		});
-	};
+let [bookmarks, setBookmarks] = useState([])
 
-	// =============== CREATE BOOKMARK ============ //
+// =========== GET BOOKMARKED ARTICLES ============== //
 
-	const handleCreate = (newBookmark) => {
-		axios.post('http://localhost:8000/articles', newBookmark).then((res) => {
-			console.log(res);
-			getBookmarks();
-		});
-	};
+const getBookmarks = () =>{
+  axios
+    .get('http://localhost:8000/articles')
+    .then((res)=>{
+      setBookmarks(res.data)
+      console.log(res.data)
+    })
+}
 
-	// =================== DELETE BOOKMARK ============= //
 
-	const handleDelete = (event) => {
-		console.log(event);
-		axios
-			.delete(`http://localhost:8000/articles/${event.target.value}`)
-			.then((res) => {
-				getBookmarks();
-			});
-	};
+// =============== CREATE BOOKMARK ============ //
 
-	// =============== UPDATE BOOKMARK ============ //
-	const handleUpdate = (editBookmark) => {
-		console.log(editBookmark);
-		axios
-			.put(`http://localhost:8000/articles/${editBookmark.id}`, editBookmark)
-			.then((res) => {
-				getBookmarks();
-			});
-	};
+const handleCreate = (newBookmark) =>{
+  axios
+    .post('http://localhost:8000/articles', newBookmark)
+    .then((res)=>{
+      console.log(res)
+      getBookmarks()
+    })
+}
 
-	useEffect(() => {
-		getBookmarks();
-	}, []);
+// =================== DELETE BOOKMARK ============= //
 
-	return (
-		<div className='body'>
-			<div className='nav'>
-				<div className='logocontainer'>
-					<img
-						src='https://cdn-icons-png.flaticon.com/512/21/21601.png'
-						className='logo'
-					/>
-				</div>
+const handleDelete = (event) =>{
+console.log(event)
+  axios
+    .delete(`http://localhost:8000/articles/${event.target.value}`)
+    .then((res)=>{
+      getBookmarks()
+    })
+}
 
-				<div className='users'>
-					<div className='signup'>
-						<Signup />
-					</div>
-				</div>
-			</div>
-			<Category />
+ // =============== UPDATE BOOKMARK ============ //
+  const handleUpdate = (editBookmark) => {
+    console.log(editBookmark);
+    axios
+      .put(`http://localhost:8000/articles/${editBookmark.id}`, editBookmark)
+      .then((res) => {
+        getBookmarks();
+      });
+  };
 
-					{/* <div className='login'> */}
-						<Login />
-					{/* </div> */}
-			<ToastContainer />
+useEffect(()=>{
+  getBookmarks()
+}, [])
 
-			<h1>Bookmarks</h1>
+  return (
+    <div className="body">
 
-			<CreateBookmark handleCreate={handleCreate} />
+    <div className="nav">
 
-			{bookmarks.map((bookmark) => {
-				return (
-					<div className='bookmark' key={bookmark.id}>
-						<img src={bookmark.url} />
-						<h3>{bookmark.title}</h3>
-						<h5>written by: {bookmark.author}</h5>
-						<p>{bookmark.description}</p>
-						<h5>Published at: {bookmark.publishedAt}</h5>
-						<EditBookmark handleUpdate={handleUpdate} news={bookmark} />
-						<button onClick={handleDelete} value={bookmark.id}>
-							Delete
-						</button>
-					</div>
-				);
-			})}
-		</div>
-	);
+        <div className="logocontainer"><img src="https://cdn-icons-png.flaticon.com/512/21/21601.png" className="logo"/>
+        </div>
+
+        <div className="users">
+            <div className="signup"><Signup/></div>
+            <div className="login"><Login/></div>
+        </div>
+
+    </div>
+    <Category />
+    <API/>
+    
+    
+    
+    <ToastContainer />
+  
+    
+    <h1>Bookmarks</h1>
+
+    
+    <CreateBookmark handleCreate={handleCreate}/>
+
+    {bookmarks.map((bookmark)=>{
+      return(
+        <div className='article' key={bookmark.id}>
+          <div className="card">
+          <img src= {bookmark.url}/>
+          <h3>{bookmark.title}</h3>
+          <h5>written by: {bookmark.author}</h5>
+          <p>{bookmark.description}</p>
+          <h5>Published at: {bookmark.publishedAt}</h5>
+          <EditBookmark handleUpdate={handleUpdate}   news={bookmark}/>
+          <button onClick={handleDelete} value={bookmark.id}>Delete</button>
+          </div>
+        </div>
+      )
+    })}
+    
+    </div>
+  );
+
 };
 
 export default App;

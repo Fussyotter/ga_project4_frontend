@@ -17,7 +17,10 @@ const CreateBookmarks = (props) => {
 
   return (
     <>
+    <details>
+    <summary className='btn'>Create Bookmarks</summary>
         <form onSubmit={handleSubmit}>
+        
         <label htmlFor="name">Author: </label>
             <input className="createinput" type="text" name="author" onChange={handleChange} />
             <br />
@@ -40,6 +43,7 @@ const CreateBookmarks = (props) => {
             <br />
             <input type="submit" />
         </form>
+        </details>
     </>
     );
 };
