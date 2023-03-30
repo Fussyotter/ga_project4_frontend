@@ -65,13 +65,26 @@ useEffect(()=>{
 }, [])
 
   return (
-    <>
-    <h1>News App</h1>
-    <Category />
-    <Signup />
-    <Login/>
-    <ToastContainer />
+    <div className="body">
+
+    <div className="nav">
+
+        <div className="logocontainer"><img src="https://cdn-icons-png.flaticon.com/512/21/21601.png" className="logo"/>
+        </div>
+
+        <div className="users">
+            <div className="signup"><Signup/></div>
+            <div className="login"><Login/></div>
+        </div>
+
+    </div>
+
     <API/>
+    <Category />
+    
+    
+    <ToastContainer />
+  
     
     <h1>Bookmarks</h1>
 
@@ -93,7 +106,7 @@ useEffect(()=>{
       )
     })}
     
-    </>
+    </div>
   );
 };
 

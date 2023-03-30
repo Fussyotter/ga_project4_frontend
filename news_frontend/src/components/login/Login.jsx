@@ -56,7 +56,10 @@ const Login = () => {
 
 	return (
 		<>
-			<div>
+		<details>
+				<summary>Login</summary>
+				<div>
+			
 				<label htmlFor='username'>Username:</label>
 				<input
 					type='text'
@@ -93,6 +96,8 @@ const Login = () => {
 					</div>
 				)}
 			</div>
+			</details>
+			
 		</>
 	);
 };
