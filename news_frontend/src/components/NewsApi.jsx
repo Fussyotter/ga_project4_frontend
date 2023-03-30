@@ -68,6 +68,7 @@ const handleAddToUser = (article) => {
         <input type ='text' value ={search} onChange={(e) => setSearch(e.target.value)}/>
         <button onClick={handleSearchChange}>test</button>
         </div>
+        <div className="grid">
         {newsData.map((news)=>{
             return (
 							<><div className="article">
@@ -75,18 +76,23 @@ const handleAddToUser = (article) => {
 								<img src={news.urlToImage} />
 								<h3>{news.title}</h3>
 								<h5>Written by: {news.author}</h5>
+                <details>
 								<p>{news.description}</p>
+                </details>
 								<h6>
 									<a href={news.url}>Read more</a>
 								</h6>
-								<button onClick={() => handleAddToUser(news)}>test</button>
+								<button onClick={() => handleAddToUser(news)}>Add Bookmark</button>
 
 								<h6>Published at: {news.publishedAt}</h6>
                 </div>
                 </div>
+                
 							</>
+              
 						);
         })}
+        </div>
         </>
     );
 }

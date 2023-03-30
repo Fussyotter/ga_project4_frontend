@@ -81,12 +81,18 @@ const Login = () => {
 					) : (
 						<div>
 							<p>Welcome, {username}!</p>
-							<div>
+							<div className='grid'>
 								{authorDescriptionTitle.map((item) => (
-									<div key={item.title}>
-										<h3>{item.title}</h3>
-										<p>Author: {item.author}</p>
-										<p>URL: {item.url}</p>
+									<div className='article'>
+										<div className='card'>
+											<div key={item.title}>
+												<h3>{item.title}</h3>
+												<img src={item.urlToImage} />
+												<p>Author: {item.author}</p>
+												<a href={item.url}>Read more</a>
+												{console.log(item)}
+											</div>
+										</div>
 									</div>
 								))}
 							</div>
