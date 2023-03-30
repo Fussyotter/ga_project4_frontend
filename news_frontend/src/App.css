@@ -15,20 +15,20 @@ body {
   justify-content: center;
   margin-bottom: 2rem;
   gap: 1rem;
-  
+ 
 }
 
 .card {
   
-  background-color: #f4f4f4;
+  background-color: #f2e7e7;
   border-radius: 5px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
   flex-direction: column;
   margin: 1rem;
   max-width: 400px;
   overflow: hidden;
   padding: 1rem;
-  /* width: calc(50% - 2rem); */
+ 
 } 
 
 
@@ -95,6 +95,7 @@ button {
   cursor: pointer;
   border-radius: 5px;
   outline: none;
+  
 }
 
 button:hover {
