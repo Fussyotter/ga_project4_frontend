@@ -34,8 +34,12 @@ useEffect(()=>{
     return (
         <>
         <h1>News API</h1>
-        <input className="searchbar" type ='text' value ={search} onChange={(e) => setSearch(e.target.value)}/>
-        <button className="searchbutton" onClick={handleSearchChange}>Search</button>
+        
+        <div className="searchcontainer">
+            <input className="searchbar" type ='text' value ={search} onChange={(e) => setSearch(e.target.value)}/>
+            <button className="searchbutton" onClick={handleSearchChange}>Search</button>
+        </div>
+        
         {newsData.map((news)=>{
             return(
             <>

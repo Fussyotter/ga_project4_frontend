@@ -32,8 +32,9 @@ const Signup = () => {
 
 	return (
 		<div>
-			<h1>Sign up</h1>
-			<form>
+			<details>
+				<summary>Sign up</summary>
+				<form>
 				<div>
 					<label htmlFor='usernameId'>User name</label>
 					<input
@@ -61,6 +62,9 @@ const Signup = () => {
 				</div>
 			</form>
 			<button onClick={onSignupClick}>Sign up</button>
+			</details>
+			{/* <h1></h1> */}
+			
 			{/* <p className='mt-2'>
 				Already have account? <a href='/login'>Login</a>
 			</p> */}
