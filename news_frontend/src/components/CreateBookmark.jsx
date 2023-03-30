@@ -19,23 +19,23 @@ const CreateBookmarks = (props) => {
     <>
         <form onSubmit={handleSubmit}>
         <label htmlFor="name">Author: </label>
-            <input type="text" name="author" onChange={handleChange} />
+            <input className="createinput" type="text" name="author" onChange={handleChange} />
             <br />
             <br />
             <label htmlFor="name">Title: </label>
-            <input type="text" name="title" onChange={handleChange} />
+            <input className="createinput" type="text" name="title" onChange={handleChange} />
             <br />
             <br />
             <label htmlFor="name">Description: </label>
-            <input type="text" name="description" onChange={handleChange} />
+            <input className="createinput" type="text" name="description" onChange={handleChange} />
             <br />
             <br />
             <label htmlFor="name">News URL: </label>
-            <input type="text" name="url" onChange={handleChange} />
+            <input className="createinput" type="text" name="url" onChange={handleChange} />
             <br />
             <br />
             <label htmlFor="name">Published At: </label>
-            <input type="text" name="publishedAt" onChange={handleChange} />
+            <input className="createinput" type="text" name="publishedAt" onChange={handleChange} />
             <br />
             <br />
             <input type="submit" />
