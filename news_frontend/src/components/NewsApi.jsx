@@ -18,7 +18,7 @@ const API = (props) => {
 	const getNewsdata = () => {
 		axios
 			.get(
-				`https://newsapi.org/v2/everything?language=en&q=sports&apiKey=b6af741376054e738865ec14e3a907c1`,
+				`https://newsapi.org/v2/everything?language=en&q=sports&apiKey=11521f070b4c48fda14b33dc24389d9c`,
 				emptyNewsData
 			)
 			.then((res) => {
