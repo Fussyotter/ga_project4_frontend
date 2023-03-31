@@ -8,7 +8,7 @@ const Article = ( props ) => {
 		const fetchArticle = async () => {
 			try {
 				const response = await axios.get(
-					`http://localhost:8000/articles/user/${props.username}/`,
+					`https://news-backend-uppd.onrender.com/articles/user/${props.username}/`,
 					{
 						headers: {
 							Authorization: `Token ${props.token}`,

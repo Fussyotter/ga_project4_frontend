@@ -9,8 +9,11 @@ import Category from './components/Category.jsx';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './test.css';
-
 import './App.css';
+// import dotenv from 'dotenv';
+// dotenv.config();
+
+
 const App = () => {
 
 
@@ -19,12 +22,10 @@ let [bookmarks, setBookmarks] = useState([])
 // =========== GET BOOKMARKED ARTICLES ============== //
 
 const getBookmarks = () =>{
-  axios
-    .get('http://localhost:8000/articles')
-    .then((res)=>{
-      setBookmarks(res.data)
-      console.log(res.data)
-    })
+  axios.get('https://news-backend-uppd.onrender.com/articles').then((res) => {
+		setBookmarks(res.data);
+		console.log(res.data);
+	});
 }
 
 
@@ -32,11 +33,11 @@ const getBookmarks = () =>{
 
 const handleCreate = (newBookmark) =>{
   axios
-    .post('http://localhost:8000/articles', newBookmark)
-    .then((res)=>{
-      console.log(res)
-      getBookmarks()
-    })
+		.post('https://news-backend-uppd.onrender.com/articles', newBookmark)
+		.then((res) => {
+			console.log(res);
+			getBookmarks();
+		});
 }
 
 // =================== DELETE BOOKMARK ============= //
@@ -44,20 +45,25 @@ const handleCreate = (newBookmark) =>{
 const handleDelete = (event) =>{
 console.log(event)
   axios
-    .delete(`http://localhost:8000/articles/${event.target.value}`)
-    .then((res)=>{
-      getBookmarks()
-    })
+		.delete(
+			`https://news-backend-uppd.onrender.com/articles/${event.target.value}`
+		)
+		.then((res) => {
+			getBookmarks();
+		});
 }
 
  // =============== UPDATE BOOKMARK ============ //
   const handleUpdate = (editBookmark) => {
     console.log(editBookmark);
     axios
-      .put(`http://localhost:8000/articles/${editBookmark.id}`, editBookmark)
-      .then((res) => {
-        getBookmarks();
-      });
+			.put(
+				`https://news-backend-uppd.onrender.com/articles/${editBookmark.id}`,
+				editBookmark
+			)
+			.then((res) => {
+				getBookmarks();
+			});
   };
 
 useEffect(()=>{

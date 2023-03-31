@@ -14,7 +14,7 @@ export const login = async (userData) => {
 		console.log('Logging in with data:', userData);
 
 		const response = await axios.post(
-			'http://localhost:8000/v1/token/login/',
+			'https://news-backend-uppd.onrender.com/v1/token/login/',
 			userData
 		);
 		console.log('Login response:', response.data);
@@ -24,7 +24,7 @@ export const login = async (userData) => {
 		// console.log(auth_token)
 		const user = await getCurrentUser();
 		const userArticlesResponse = await axios.get(
-			`http://localhost:8000/articles/user/${userData.username}`,
+			`https://news-backend-uppd.onrender.com/articles/user/${userData.username}`,
 			{
 				headers: {
 					Authorization: `Token ${auth_token}`,
@@ -53,7 +53,9 @@ export const login = async (userData) => {
 // goes to the api endpoint with djoser and enters the information into fields.
 export const getCurrentUser = async () => {
 	try {
-		const response = await axios.get('http://localhost:8000/v1/users/me');
+		const response = await axios.get(
+			'https://news-backend-uppd.onrender.com/v1/users/me'
+		);
 		const user = {
 			username: response.data.username,
 			email: response.data.email,
@@ -92,7 +94,9 @@ export const unsetCurrentUser = () => {
 
 export const logout = async () => {
 	try {
-		await axios.post('http://localhost:8000/v1/token/logout/');
+		await axios.post(
+			'https://news-backend-uppd.onrender.com/v1/token/logout/'
+		);
 		unsetCurrentUser();
 		console.log('logout success');
 	} catch (error) {

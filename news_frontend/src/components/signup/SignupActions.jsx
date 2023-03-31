@@ -3,7 +3,7 @@ import axios from 'axios';
 export const signupNewUser = async (userData) => {
 	try {
 		const response = await axios.post(
-			'http://localhost:8000/v1/users/',
+			'https://news-backend-uppd.onrender.com/v1/users/',
 			userData
 		);
 		// djoser default url doesn't have first/last name by default in post so have to use patch

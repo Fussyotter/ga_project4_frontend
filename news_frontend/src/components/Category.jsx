@@ -7,8 +7,8 @@ const Category = (props) => {
   const [category, setCategory] = useState([]);
 
   const getArticles = async () => {
-    const API_KEY = "a47d3f89e50f4c399034797f62f2e2b4";
-    const url = `https://newsapi.org/v2/top-headlines?language=en&category=${category}&apiKey=b6af741376054e738865ec14e3a907c1`;
+    const API = process.env.REACT_APP_API_KEY
+    const url = `https://newsapi.org/v2/top-headlines?language=en&category=${category}&apiKey=${API}`;
     const response = await axios.get(url);
     props.setNewsData(response.data.articles);
   };

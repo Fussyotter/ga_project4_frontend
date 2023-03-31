@@ -14,11 +14,13 @@ const API = (props) => {
 	};
 	let [newsData, setNewsData] = useState([]);
 	let [search, setSearch] = useState('');
+	
+	const API = process.env.REACT_APP_API_KEY;
 
 	const getNewsdata = () => {
 		axios
 			.get(
-				`https://newsapi.org/v2/everything?language=en&q=sports&apiKey=b6af741376054e738865ec14e3a907c1`,
+				`https://newsapi.org/v2/everything?language=en&q=sports&apiKey=${API}`,
 				emptyNewsData
 			)
 			.then((res) => {
@@ -30,7 +32,7 @@ const API = (props) => {
 	const handleSearchChange = (e) => {
 		axios
 			.get(
-				`https://newsapi.org/v2/everything?language=en&q='${search}'&apiKey=11521f070b4c48fda14b33dc24389d9c`
+				`https://newsapi.org/v2/everything?language=en&q='${search}'&apiKey=${API}`
 			)
 			.then((res) => {
 				setNewsData(res.data.articles);
@@ -49,7 +51,7 @@ const API = (props) => {
 		};
 
 		axios
-			.post('http://localhost:8000/articles', data, {
+			.post('https://news-backend-uppd.onrender.com/articles', data, {
 				headers: {
 					'Content-Type': 'application/json',
 				},
