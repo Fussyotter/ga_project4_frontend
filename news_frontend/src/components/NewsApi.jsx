@@ -68,7 +68,6 @@ const API = (props) => {
 
 	return (
 		<>
-			<h1>News API</h1>
 			<div className='searchcontainer'>
 				<input
 					className='searchbar'
