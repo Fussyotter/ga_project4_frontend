@@ -1,14 +1,14 @@
 import axios from 'axios';
-
+// https://axios-http.com/docs
 export const setAxiosAuthToken = (token) => {
 	if (typeof token !== 'undefined' && token) {
-		// Apply for every request
 		axios.defaults.headers.common['Authorization'] = 'Token ' + token;
 	} else {
-		// Delete auth header
 		delete axios.defaults.headers.common['Authorization'];
 	}
 };
+// Delete auth header
+// Apply for every request
 export const login = async (userData) => {
 	try {
 		console.log('Logging in with data:', userData);
@@ -81,9 +81,9 @@ export const setCurrentUser = (user) => {
 export const setToken = (token) => {
 	setAxiosAuthToken(token);
 	localStorage.setItem('token', token);
-	// setToken(token)
 };
 
+// setToken(token)
 export const unsetCurrentUser = () => {
 	setAxiosAuthToken('');
 	localStorage.removeItem('token');
